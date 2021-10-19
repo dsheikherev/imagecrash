@@ -11,6 +11,10 @@
 #import <EXSplashScreen/EXSplashScreenService.h>
 #import <UMCore/UMModuleRegistryProvider.h>
 
+
+
+#import <objc/runtime.h>
+
 #if defined(FB_SONARKIT_ENABLED) && __has_include(<FlipperKit/FlipperClient.h>)
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -39,6 +43,20 @@ static void InitializeFlipper(UIApplication *application) {
 
 @implementation AppDelegate
 
+static void __Bugsee_swizzleSurface()
+{
+  Class class = NSClassFromString(@"IOSurface");
+  Method m = class_getInstanceMethod(class,
+                                     @selector(initWithProperties:));
+  __Bugsee_surf_init_original_Method = method_setImplementation(m, (IMP)__Bugsee_surf_init);
+}
+
+static IMP __Bugsee_surf_init_original_Method;
+void __Bugsee_surf_init(id slf, SEL _cmd, id opt)
+{
+  ((void(*)(id,SEL,id))__Bugsee_surf_init_original_Method)(slf, _cmd, opt);
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #if defined(FB_SONARKIT_ENABLED) && __has_include(<FlipperKit/FlipperClient.h>)
@@ -58,6 +76,8 @@ static void InitializeFlipper(UIApplication *application) {
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
+  __Bugsee_swizzleSurface();
+  
   return YES;
 }
 
@@ -109,3 +129,4 @@ static void InitializeFlipper(UIApplication *application) {
 }
 
 @end
+

@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import * as FileSystem from "expo-file-system";
-import Bugsee from "react-native-bugsee";
+// import Bugsee from "react-native-bugsee";
 
 export default function App() {
   const [path, setPath] = React.useState("");
@@ -10,15 +10,15 @@ export default function App() {
   useEffect(() => {
     const attempt = async () => {
       try {
-        const options = new Bugsee.IOSLaunchOptions();
-        options.shakeToReport = false;
-        options.reportPrioritySelector = true;
-        options.screenshotEnabled = true;
-        options.killDetection = true;
-        options.maxRecordingTime = 30;
+        // const options = new Bugsee.IOSLaunchOptions();
+        // options.shakeToReport = false;
+        // options.reportPrioritySelector = true;
+        // options.screenshotEnabled = true;
+        // options.killDetection = true;
+        // options.maxRecordingTime = 30;
         
         // bugsee key goes here
-        Bugsee.launch("", options);
+        // Bugsee.launch("", options);
 
         // const dest = env.paths.getTempPath({ suffix: 'jpg' });
         const dest = FileSystem.documentDirectory + "test.jpg";
