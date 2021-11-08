@@ -1,0 +1,268 @@
+
+Incident Identifier: D1278AC9-4137-442A-A593-90B3539F2A8E
+CrashReporter Key:   0df0f11c5367217c98ef19d82fae7b7634f5c5b9
+Hardware Model:      iPhone10,6
+Process:             expoimagecrash [3100]
+Path:                /private/var/containers/Bundle/Application/21A13AB6-595B-4272-9F8A-09C39B35E093/expoimagecrash.app/expoimagecrash
+Identifier:          org.name.expoimagecrash
+Version:             1.0 (1)
+Code Type:           ARM-64 (Native)
+Role:                Foreground
+Parent Process:      launchd [1]
+Coalition:           org.name.expoimagecrash [1319]
+
+Date/Time:           2021-11-08 12:51:40.4997 +0700
+Launch Time:         2021-11-08 12:51:36.1636 +0700
+OS Version:          iPhone OS 15.1 (19B74)
+Release Type:        User
+Baseband Version:    5.00.00
+Report Version:      104
+
+Exception Type:  EXC_BAD_ACCESS (SIGSEGV)
+Exception Subtype: KERN_INVALID_ADDRESS at 0x0000000000000018
+Exception Codes: 0x0000000000000001, 0x0000000000000018
+VM Region Info: 0x18 is not in any region.  Bytes before following region: 4307550184
+      REGION TYPE                 START - END      [ VSIZE] PRT/MAX SHRMOD  REGION DETAIL
+      UNUSED SPACE AT START
+--->  
+      __TEXT                   100c00000-101190000 [ 5696K] r-x/r-x SM=COW  ...xpoimagecrash
+Exception Note:  EXC_CORPSE_NOTIFY
+Termination Reason: SIGNAL 11 Segmentation fault: 11
+Terminating Process: exc handler [3100]
+
+Triggered by Thread:  0
+
+Thread 0 name:   Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   libsystem_pthread.dylib       	       0x1dc515a6c pthread_mutex_lock$VARIANT$armv81 + 0
+1   IOSurface                     	       0x1aebac364 IOSurfaceClientSetValue + 108
+2   CMPhoto                       	       0x1e04377fc CMPhotoCreateMemorySurface + 364
+3   CMPhoto                       	       0x1e042fe24 _createHWDecoderIfNeeded + 904
+4   CMPhoto                       	       0x1e0431474 _prepare + 132
+5   CMPhoto                       	       0x1e0425a08 CMPhotoUnifiedJPEGDecoderDecode + 148
+6   CMPhoto                       	       0x1e0423024 _decodeImage + 1368
+7   CMPhoto                       	       0x1e0425164 _createImageForIndex + 80
+8   CMPhoto                       	       0x1e04255fc CMPhotoDecompressionContainerCreateImageForIndex + 124
+9   ImageIO                       	       0x183f90c98 AppleJPEGReadPlugin::copyIOSurface(InfoRec*, CGImageProvider*, __CFDictionary const*) + 844
+10  ImageIO                       	       0x183fce194 IIO_Reader::CopyIOSurfaceProc(void*, CGImageProvider*, __CFDictionary const*) + 84
+11  ImageIO                       	       0x183fb009c IIOImageProviderInfo::copyIOSurface(CGImageProvider*, __CFDictionary const*) + 348
+12  ImageIO                       	       0x183fb4940 IIOImageProviderInfo::CopyIOSurface(void*, CGImageProvider*, __CFDictionary const*) + 408
+13  QuartzCore                    	       0x1860f4364 CA::Render::copy_image(CGImage*, CGColorSpace*, unsigned int, double, double) + 2284
+14  QuartzCore                    	       0x18613ff64 CA::Render::prepare_image(CGImage*, CGColorSpace*, unsigned int, double) + 20
+15  QuartzCore                    	       0x186093b44 CA::Layer::prepare_commit(CA::Transaction*) + 504
+16  QuartzCore                    	       0x1860a809c CA::Context::commit_transaction(CA::Transaction*, double, double*) + 532
+17  QuartzCore                    	       0x1860b0588 CA::Transaction::commit() + 660
+18  QuartzCore                    	       0x18609407c CA::Transaction::flush_as_runloop_observer(bool) + 84
+19  CoreFoundation                	       0x182591f24 __CFRUNLOOP_IS_CALLING_OUT_TO_AN_OBSERVER_CALLBACK_FUNCTION__ + 32
+20  CoreFoundation                	       0x182563568 __CFRunLoopDoObservers + 588
+21  CoreFoundation                	       0x18255eafc __CFRunLoopRun + 1012
+22  CoreFoundation                	       0x182571d7c CFRunLoopRunSpecific + 572
+23  GraphicsServices              	       0x19c7e69a0 GSEventRunModal + 160
+24  UIKitCore                     	       0x184da405c -[UIApplication _run] + 1080
+25  UIKitCore                     	       0x184b39ce0 UIApplicationMain + 2028
+26  expoimagecrash                	       0x100c08678 main + 104
+27  dyld                          	       0x102910190 start + 444
+
+Thread 1:
+0   libsystem_pthread.dylib       	       0x1dc5159e8 start_wqthread + 0
+
+Thread 2:
+0   libsystem_pthread.dylib       	       0x1dc5159e8 start_wqthread + 0
+
+Thread 3:
+0   libsystem_pthread.dylib       	       0x1dc5159e8 start_wqthread + 0
+
+Thread 4 name:  com.apple.uikit.eventfetch-thread
+Thread 4:
+0   libsystem_kernel.dylib        	       0x1bbfc8b10 mach_msg_trap + 8
+1   libsystem_kernel.dylib        	       0x1bbfc9134 mach_msg + 72
+2   CoreFoundation                	       0x18255aac0 __CFRunLoopServiceMachPort + 368
+3   CoreFoundation                	       0x18255eba8 __CFRunLoopRun + 1184
+4   CoreFoundation                	       0x182571d7c CFRunLoopRunSpecific + 572
+5   Foundation                    	       0x183caa00c -[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 232
+6   Foundation                    	       0x183ce918c -[NSRunLoop(NSRunLoop) runUntilDate:] + 88
+7   UIKitCore                     	       0x184d21d58 -[UIEventFetcher threadMain] + 512
+8   Foundation                    	       0x183cf6efc __NSThread__start__ + 792
+9   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+10  libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 5:
+0   libsystem_pthread.dylib       	       0x1dc5159e8 start_wqthread + 0
+
+Thread 6:
+0   libsystem_pthread.dylib       	       0x1dc5159e8 start_wqthread + 0
+
+Thread 7:
+0   libsystem_pthread.dylib       	       0x1dc5159e8 start_wqthread + 0
+
+Thread 8 name:  com.facebook.react.JavaScript
+Thread 8:
+0   libsystem_kernel.dylib        	       0x1bbfc8b10 mach_msg_trap + 8
+1   libsystem_kernel.dylib        	       0x1bbfc9134 mach_msg + 72
+2   CoreFoundation                	       0x18255aac0 __CFRunLoopServiceMachPort + 368
+3   CoreFoundation                	       0x18255eba8 __CFRunLoopRun + 1184
+4   CoreFoundation                	       0x182571d7c CFRunLoopRunSpecific + 572
+5   expoimagecrash                	       0x100dd0860 +[RCTCxxBridge runRunLoop] + 704
+6   Foundation                    	       0x183cf6efc __NSThread__start__ + 792
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 9 name:  JavaScriptCore bmalloc scavenger
+Thread 9:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   libc++.1.dylib                	       0x19982c350 std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >) + 96
+3   JavaScriptCore                	       0x18db2b96c bmalloc::Scavenger::threadRunLoop() + 796
+4   JavaScriptCore                	       0x18db2b180 bmalloc::Scavenger::threadEntryPoint(bmalloc::Scavenger*) + 12
+5   JavaScriptCore                	       0x18db2c820 void* std::__1::__thread_proxy<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct> >, void (*)(bmalloc::Scavenger*), bmalloc::Scavenger*> >(void*) + 44
+6   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+7   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 10 name:  com.apple.CFStream.LegacyThread
+Thread 10:
+0   libsystem_kernel.dylib        	       0x1bbfc8b10 mach_msg_trap + 8
+1   libsystem_kernel.dylib        	       0x1bbfc9134 mach_msg + 72
+2   CoreFoundation                	       0x18255aac0 __CFRunLoopServiceMachPort + 368
+3   CoreFoundation                	       0x18255eba8 __CFRunLoopRun + 1184
+4   CoreFoundation                	       0x182571d7c CFRunLoopRunSpecific + 572
+5   CoreFoundation                	       0x18264eb14 _legacyStreamRunLoop_workThread + 260
+6   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+7   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 11 name:  com.squareup.SocketRocket.NetworkThread
+Thread 11:
+0   libsystem_kernel.dylib        	       0x1bbfc8b10 mach_msg_trap + 8
+1   libsystem_kernel.dylib        	       0x1bbfc9134 mach_msg + 72
+2   CoreFoundation                	       0x18255aac0 __CFRunLoopServiceMachPort + 368
+3   CoreFoundation                	       0x18255eba8 __CFRunLoopRun + 1184
+4   CoreFoundation                	       0x182571d7c CFRunLoopRunSpecific + 572
+5   Foundation                    	       0x183caa00c -[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 232
+6   expoimagecrash                	       0x100e7cf44 -[_RCTSRRunLoopThread main] + 356
+7   Foundation                    	       0x183cf6efc __NSThread__start__ + 792
+8   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+9   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 12 name:  com.apple.NSURLConnectionLoader
+Thread 12:
+0   libsystem_kernel.dylib        	       0x1bbfc8b10 mach_msg_trap + 8
+1   libsystem_kernel.dylib        	       0x1bbfc9134 mach_msg + 72
+2   CoreFoundation                	       0x18255aac0 __CFRunLoopServiceMachPort + 368
+3   CoreFoundation                	       0x18255eba8 __CFRunLoopRun + 1184
+4   CoreFoundation                	       0x182571d7c CFRunLoopRunSpecific + 572
+5   CFNetwork                     	       0x182f75f38 0x182d2a000 + 2408248
+6   Foundation                    	       0x183cf6efc __NSThread__start__ + 792
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 13 name:  com.apple.CFSocket.private
+Thread 13:
+0   libsystem_kernel.dylib        	       0x1bbfc971c __select + 8
+1   CoreFoundation                	       0x1825f66fc __CFSocketManager + 636
+2   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+3   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 14 name:  Heap Helper Thread
+Thread 14:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   JavaScriptCore                	       0x18daaf47c WTF::ParkingLot::parkConditionallyImpl(void const*, WTF::ScopedLambda<bool ()> const&, WTF::ScopedLambda<void ()> const&, WTF::TimeWithDynamicClockType const&) + 3004
+3   JavaScriptCore                	       0x18d2e4450 bool WTF::Condition::waitUntilUnchecked<WTF::Lock>(WTF::Lock&, WTF::TimeWithDynamicClockType const&) + 184
+4   JavaScriptCore                	       0x18da7bcd4 WTF::Detail::CallableWrapper<WTF::AutomaticThread::start(WTF::AbstractLocker const&)::$_0, void>::call() + 392
+5   JavaScriptCore                	       0x18dad3d94 WTF::Thread::entryPoint(WTF::Thread::NewThreadContext*) + 256
+6   JavaScriptCore                	       0x18dad66e0 WTF::wtfThreadEntryPoint(void*) + 12
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 15 name:  Heap Helper Thread
+Thread 15:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   JavaScriptCore                	       0x18daaf47c WTF::ParkingLot::parkConditionallyImpl(void const*, WTF::ScopedLambda<bool ()> const&, WTF::ScopedLambda<void ()> const&, WTF::TimeWithDynamicClockType const&) + 3004
+3   JavaScriptCore                	       0x18d2e4450 bool WTF::Condition::waitUntilUnchecked<WTF::Lock>(WTF::Lock&, WTF::TimeWithDynamicClockType const&) + 184
+4   JavaScriptCore                	       0x18da7bcd4 WTF::Detail::CallableWrapper<WTF::AutomaticThread::start(WTF::AbstractLocker const&)::$_0, void>::call() + 392
+5   JavaScriptCore                	       0x18dad3d94 WTF::Thread::entryPoint(WTF::Thread::NewThreadContext*) + 256
+6   JavaScriptCore                	       0x18dad66e0 WTF::wtfThreadEntryPoint(void*) + 12
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 16 name:  Heap Helper Thread
+Thread 16:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   JavaScriptCore                	       0x18daaf47c WTF::ParkingLot::parkConditionallyImpl(void const*, WTF::ScopedLambda<bool ()> const&, WTF::ScopedLambda<void ()> const&, WTF::TimeWithDynamicClockType const&) + 3004
+3   JavaScriptCore                	       0x18d2e4450 bool WTF::Condition::waitUntilUnchecked<WTF::Lock>(WTF::Lock&, WTF::TimeWithDynamicClockType const&) + 184
+4   JavaScriptCore                	       0x18da7bcd4 WTF::Detail::CallableWrapper<WTF::AutomaticThread::start(WTF::AbstractLocker const&)::$_0, void>::call() + 392
+5   JavaScriptCore                	       0x18dad3d94 WTF::Thread::entryPoint(WTF::Thread::NewThreadContext*) + 256
+6   JavaScriptCore                	       0x18dad66e0 WTF::wtfThreadEntryPoint(void*) + 12
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 17 name:  Heap Helper Thread
+Thread 17:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   JavaScriptCore                	       0x18daaf47c WTF::ParkingLot::parkConditionallyImpl(void const*, WTF::ScopedLambda<bool ()> const&, WTF::ScopedLambda<void ()> const&, WTF::TimeWithDynamicClockType const&) + 3004
+3   JavaScriptCore                	       0x18d2e4450 bool WTF::Condition::waitUntilUnchecked<WTF::Lock>(WTF::Lock&, WTF::TimeWithDynamicClockType const&) + 184
+4   JavaScriptCore                	       0x18da7bcd4 WTF::Detail::CallableWrapper<WTF::AutomaticThread::start(WTF::AbstractLocker const&)::$_0, void>::call() + 392
+5   JavaScriptCore                	       0x18dad3d94 WTF::Thread::entryPoint(WTF::Thread::NewThreadContext*) + 256
+6   JavaScriptCore                	       0x18dad66e0 WTF::wtfThreadEntryPoint(void*) + 12
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 18 name:  Heap Helper Thread
+Thread 18:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   JavaScriptCore                	       0x18daaf47c WTF::ParkingLot::parkConditionallyImpl(void const*, WTF::ScopedLambda<bool ()> const&, WTF::ScopedLambda<void ()> const&, WTF::TimeWithDynamicClockType const&) + 3004
+3   JavaScriptCore                	       0x18d2e4450 bool WTF::Condition::waitUntilUnchecked<WTF::Lock>(WTF::Lock&, WTF::TimeWithDynamicClockType const&) + 184
+4   JavaScriptCore                	       0x18da7bcd4 WTF::Detail::CallableWrapper<WTF::AutomaticThread::start(WTF::AbstractLocker const&)::$_0, void>::call() + 392
+5   JavaScriptCore                	       0x18dad3d94 WTF::Thread::entryPoint(WTF::Thread::NewThreadContext*) + 256
+6   JavaScriptCore                	       0x18dad66e0 WTF::wtfThreadEntryPoint(void*) + 12
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+Thread 19 name:  JSC Heap Collector Thread
+Thread 19:
+0   libsystem_kernel.dylib        	       0x1bbfc94f0 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1dc5168b8 _pthread_cond_wait$VARIANT$armv81 + 1216
+2   JavaScriptCore                	       0x18daaf47c WTF::ParkingLot::parkConditionallyImpl(void const*, WTF::ScopedLambda<bool ()> const&, WTF::ScopedLambda<void ()> const&, WTF::TimeWithDynamicClockType const&) + 3004
+3   JavaScriptCore                	       0x18d2e4450 bool WTF::Condition::waitUntilUnchecked<WTF::Lock>(WTF::Lock&, WTF::TimeWithDynamicClockType const&) + 184
+4   JavaScriptCore                	       0x18da7bcd4 WTF::Detail::CallableWrapper<WTF::AutomaticThread::start(WTF::AbstractLocker const&)::$_0, void>::call() + 392
+5   JavaScriptCore                	       0x18dad3d94 WTF::Thread::entryPoint(WTF::Thread::NewThreadContext*) + 256
+6   JavaScriptCore                	       0x18dad66e0 WTF::wtfThreadEntryPoint(void*) + 12
+7   libsystem_pthread.dylib       	       0x1dc5173a4 _pthread_start + 116
+8   libsystem_pthread.dylib       	       0x1dc5159fc thread_start + 8
+
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000000000018   x1: 0x00000001edac3018   x2: 0x00000001f156f140   x3: 0x00000001930ec070
+    x4: 0x0000000000000507   x5: 0x0000000000000000   x6: 0x0000000000000000   x7: 0x0000000000000000
+    x8: 0x0000000000000004   x9: 0x557f26292ebc00fd  x10: 0x00000000000007fd  x11: 0x0000000000000001
+   x12: 0x0000000000000084  x13: 0x00000000eb1488f6  x14: 0x00000000eb349000  x15: 0x0000000000149000
+   x16: 0x00000001dc515a6c  x17: 0x0000000199791bac  x18: 0x0000000000000000  x19: 0x0000000000000000
+   x20: 0x0000000000000018  x21: 0x00000001edac3018  x22: 0x00000001f156f140  x23: 0x000000000084bfa7
+   x24: 0x000000004a504547  x25: 0x00000001f3beb6f8  x26: 0x0000000000000001  x27: 0x000000016f1fcb60
+   x28: 0x00000002806171b0   fp: 0x000000016f1fc5c0   lr: 0x00000001aebac364
+    sp: 0x000000016f1fc4d0   pc: 0x00000001dc515a6c cpsr: 0x60000000
+   far: 0x0000000000000018  esr: 0x92000006 (Data Abort) byte read Translation fault
+
+Binary Images:
+       0x1dc511000 -        0x1dc524fff libsystem_pthread.dylib arm64  <ce7eb78851553c3888d812f1419fa5fa> /usr/lib/system/libsystem_pthread.dylib
+       0x1aebaa000 -        0x1aebbcfff IOSurface arm64  <291cdb938eb4319b825e01927e3feeae> /System/Library/Frameworks/IOSurface.framework/IOSurface
+       0x1e041d000 -        0x1e04c4fff CMPhoto arm64  <f93895c13d803889a5e40d636b0048cd> /System/Library/PrivateFrameworks/CMPhoto.framework/CMPhoto
+       0x183f73000 -        0x1842f2fff ImageIO arm64  <a9c4e97681b430e99d38eb2a18e7dee0> /System/Library/Frameworks/ImageIO.framework/ImageIO
+       0x186065000 -        0x186321fff QuartzCore arm64  <e31fb9090fd03f0991a559b91bad2c7f> /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+       0x182554000 -        0x18298efff CoreFoundation arm64  <ea9c1df294c7379bbf8d970335b1552f> /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+       0x19c7e5000 -        0x19c7edfff GraphicsServices arm64  <af306dd576573f63912fabc225106419> /System/Library/PrivateFrameworks/GraphicsServices.framework/GraphicsServices
+       0x1848b8000 -        0x186041fff UIKitCore arm64  <fb5c2d366a053355b898d8d3c163d02e> /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+       0x100c00000 -        0x10118ffff expoimagecrash arm64  <86da383efae93437a6c2b826f40ee3c9> /private/var/containers/Bundle/Application/21A13AB6-595B-4272-9F8A-09C39B35E093/expoimagecrash.app/expoimagecrash
+       0x1028f8000 -        0x10294bfff dyld arm64  <5e7ef5771cc5369aa04d28fbba883086> /usr/lib/dyld
+       0x1bbfc8000 -        0x1bbff9fff libsystem_kernel.dylib arm64  <28a82cbdb2103662af9e636819d8909a> /usr/lib/system/libsystem_kernel.dylib
+       0x183c92000 -        0x183f72fff Foundation arm64  <86d8a58db71f34c683e0014b2b835f1d> /System/Library/Frameworks/Foundation.framework/Foundation
+       0x199823000 -        0x19987bfff libc++.1.dylib arm64  <0b3e0b571a513ec98680bd398555aeeb> /usr/lib/libc++.1.dylib
+       0x18cb0e000 -        0x18dc35fff JavaScriptCore arm64  <c9068a147fe935909fd2c07e82a16a8e> /System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
+       0x182d2a000 -        0x1831bffff CFNetwork arm64  <d47c42c4e8f531babf5e074a91376b00> /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+               0x0 - 0xffffffffffffffff ??? unknown-arch  <00000000000000000000000000000000> ???
+
+EOF
+
