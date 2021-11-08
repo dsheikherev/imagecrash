@@ -41,20 +41,21 @@ static void InitializeFlipper(UIApplication *application) {
 
 @end
 
+static IMP __surface_init_original_Method;
+
+void __surface_init_swizzled_Method(id slf, SEL _cmd, id opt)
+{
+  return ((void(*)(id,SEL,id))__surface_init_original_Method)(slf, _cmd, opt);
+}
+
 @implementation AppDelegate
 
-static void __Bugsee_swizzleSurface()
+- (void) __swizzleSurface
 {
   Class class = NSClassFromString(@"IOSurface");
   Method m = class_getInstanceMethod(class,
                                      @selector(initWithProperties:));
-  __Bugsee_surf_init_original_Method = method_setImplementation(m, (IMP)__Bugsee_surf_init);
-}
-
-static IMP __Bugsee_surf_init_original_Method;
-void __Bugsee_surf_init(id slf, SEL _cmd, id opt)
-{
-  ((void(*)(id,SEL,id))__Bugsee_surf_init_original_Method)(slf, _cmd, opt);
+  __surface_init_original_Method = method_setImplementation(m, (IMP)__surface_init_swizzled_Method);
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -76,7 +77,7 @@ void __Bugsee_surf_init(id slf, SEL _cmd, id opt)
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
-  __Bugsee_swizzleSurface();
+  [self __swizzleSurface];
   
   return YES;
 }
